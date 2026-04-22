@@ -172,31 +172,88 @@
       </value>
     </option>
     <option name="org.rust.CONSTANT">
-      <value><option name="FOREGROUND" value="79c0ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="79c0ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.CRATE">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.ENUM">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="org.rust.ENUM_VARIANT">
+      <value>
+        <option name="FOREGROUND" value="79c0ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="org.rust.LIFETIME">
+      <value>
+        <option name="FOREGROUND" value="ff7b72" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.MACRO">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="org.rust.MACRO_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.STATIC">
-      <value><option name="FOREGROUND" value="79c0ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="79c0ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.STRUCT">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.TRAIT">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="org.rust.TRAIT_METHOD">
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
+    </option>
+    <option name="org.rust.TRAIT_METHOD_CALL">
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.TYPE_ALIAS">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
     <option name="org.rust.UNION">
-      <value><option name="FOREGROUND" value="d2a8ff" /></value>
+      <value>
+        <option name="FOREGROUND" value="d2a8ff" />
+        <option name="FONT_TYPE" value="0" />
+      </value>
     </option>
   </attributes>
 </scheme>

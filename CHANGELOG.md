@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.5] — 2026-04-22
+
+### Fixed
+- **Rust tokens still rendering italic after v1.2.4 scheme update.** Root
+  cause: the Rust plugin ships a Darcula overlay (`RustDarcula.xml`) that
+  explicitly italicizes `ENUM`, `ENUM_VARIANT`, `TYPE_ALIAS`, `LIFETIME`,
+  `TRAIT_METHOD`, `TRAIT_METHOD_CALL`, plus inline hint tokens. Our v1.2.4
+  overrides set `FOREGROUND` only, so italic from the overlay cascaded
+  through. Fixed by adding explicit `FONT_TYPE="0"` (plain) to every
+  `org.rust.*` override and filling in tokens we weren't previously
+  overriding (`ENUM_VARIANT`, `LIFETIME`, `MACRO_IDENTIFIER` for macro
+  call sites, `TRAIT_METHOD`, `TRAIT_METHOD_CALL`).
+- Enum variants now render in constant blue (`#79c0ff`), lifetimes in
+  keyword coral (`#ff7b72`), macro calls in lavender (`#d2a8ff`), all
+  plain weight. Matches authentic GitHub Dark.
+
 ## [1.2.4] — 2026-04-22
 
 ### Changed
@@ -130,7 +146,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fira Code 14pt, ligatures enabled by default.
 - Rust-specific token overrides (struct, enum, trait, crate, macro).
 
-[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.2.4...HEAD
+[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.2.5...HEAD
+[1.2.5]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.5
 [1.2.4]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.4
 [1.2.3]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.3
 [1.2.2]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.2

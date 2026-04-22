@@ -29,6 +29,10 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.5</h4>
+    <ul>
+      <li>Fixed: Rust enum / type alias / macro-call / lifetime / trait-method tokens no longer inherit italic from the Rust plugin's Darcula overlay — explicit FONT_TYPE=0 on all org.rust.* overrides. Enum variants now render in constant blue, lifetimes in keyword coral.</li>
+    </ul>
     <h4>1.2.4</h4>
     <ul>
       <li>De-branded for public release: keymap renamed "Pure Black Mac", code style renamed "Pure Black Default" (also reworked to language-standard defaults: spaces everywhere, PEP 8 Python, rustfmt Rust, 2-space HCL/Protobuf/prototext).</li>
