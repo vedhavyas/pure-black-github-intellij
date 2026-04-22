@@ -1,0 +1,8 @@
+<keymap version="1" name="Vedhavyas Mac" parent="Mac OS X">
+  <action id="ClaudeCodeGUI.ChatNewlineAction">
+    <keyboard-shortcut first-keystroke="meta enter" />
+  </action>
+  <action id="NewElementMenu">
+    <keyboard-shortcut first-keystroke="alt n" />
+  </action>
+</keymap>

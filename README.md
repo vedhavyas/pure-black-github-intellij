@@ -13,6 +13,35 @@ A no-compromise pure-black (`#000000`) variant of GitHub Dark for IntelliJ Platf
 
 - Subtle `#30363d` 1-pixel borders between panels so you can tell them apart without chrome tint. Uses GitHub Primer's `border.default`.
 
+## Also bundled (opt-in)
+
+- **Keymap "Vedhavyas Mac"** — Mac OS X keymap plus `Cmd+Enter` (Claude Code GUI chat newline) and `Alt+N` (New Element menu). Enable: Settings → Keymap → "Vedhavyas Mac".
+- **Code style "Vedhavyas Default"** — indent preferences for Python (dict alignment, smart tabs), Rust (smart tabs), Terraform (tabs), Protobuf/prototext (tabs). Enable: Settings → Editor → Code Style → "Vedhavyas Default".
+
+Both are optional — theme works standalone if you want to keep your existing keymap and code style.
+
+## Recommended companion plugins
+
+Install these from Marketplace if not already there:
+
+- [Rust](https://plugins.jetbrains.com/plugin/22407-rust) — for `*.rs`
+- [Go](https://plugins.jetbrains.com/plugin/9568-go) — for `*.go`
+- [Python](https://plugins.jetbrains.com/plugin/631-python) — for `*.py`
+- [Atom Material Icons](https://plugins.jetbrains.com/plugin/10044-atom-material-icons) — colorful file icons
+- [GitHub Copilot](https://plugins.jetbrains.com/plugin/17718-github-copilot) — if you use it
+- [Ignore](https://plugins.jetbrains.com/plugin/7495--ignore) — `.gitignore` syntax highlighting
+- [Just](https://plugins.jetbrains.com/plugin/18658-just) — `Justfile` support
+- [Makefile Language](https://plugins.jetbrains.com/plugin/9333-makefile-language)
+- [.env files support](https://plugins.jetbrains.com/plugin/9525--env-files-support)
+
+## Font setup (macOS)
+
+```bash
+brew install --cask font-fira-code
+```
+
+Bundled editor scheme references Fira Code. If not installed, IDEA falls back to another monospace (you'll see the font but without ligatures).
+
 ## Install
 
 ### From JetBrains Marketplace (recommended once published)

@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-04-22
+
+### Added
+- Bundled keymap **Vedhavyas Mac** — Mac OS X parent with two overrides:
+  `Cmd+Enter` for Claude Code GUI chat newline, `Alt+N` for New Element menu.
+  Opt-in: Settings → Keymap → "Vedhavyas Mac".
+- Bundled code style **Vedhavyas Default** — indent preferences for Python
+  (dict alignment, smart tabs), Rust (smart tabs), Terraform (tabs),
+  Protobuf (tabs). Opt-in: Settings → Editor → Code Style → "Vedhavyas Default".
+
+### Notes
+- Keymap and code style ship as selectable options, not force-applied. Future
+  v1.2 may add an opt-in first-run flow that selects theme + scheme + keymap +
+  code style + editor behavior (block cursor, indent guides off) in one click.
+
 ## [1.0.0] — 2026-04-22
 
 ### Added
@@ -21,5 +36,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fira Code 14pt, ligatures enabled by default.
 - Rust-specific token overrides (struct, enum, trait, crate, macro).
 
-[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.1.0
 [1.0.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.0.0
