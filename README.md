@@ -64,12 +64,34 @@ cd pure-black-github-intellij
 
 ## Development
 
-Requires JDK 21 and the Gradle wrapper (included).
+Requires JDK 21 (`brew install openjdk@21`) and the Gradle wrapper (included).
+
+### Feedback-loop scripts
+
+The `scripts/` directory has three helpers for fast local iteration:
 
 ```bash
-./gradlew runIde       # launches a sandboxed IDE with the plugin installed
-./gradlew buildPlugin  # produces a distributable .zip
-./gradlew verifyPlugin # runs JetBrains' plugin verifier
+# Build and install into your real IDEA 2026.1 (requires IDEA quit first).
+# Pass --reset-firstrun to also clear the one-time notification flag,
+# or --open to relaunch IDEA afterward.
+./scripts/dev-install.sh
+./scripts/dev-install.sh --reset-firstrun --open
+
+# Launch a sandboxed IDEA with the plugin pre-installed. Doesn't touch
+# your real IDEA config. Good for pure visual iteration on theme.json.
+./scripts/dev-sandbox.sh
+
+# Delete the first-run state file so the notification fires again
+# without reinstalling.
+./scripts/reset-firstrun.sh
+```
+
+### Gradle directly
+
+```bash
+./gradlew buildPlugin  # produces build/distributions/pure-black-github-*.zip
+./gradlew runIde       # same as dev-sandbox.sh
+./gradlew verifyPlugin # runs JetBrains' plugin verifier against the IDEA range
 ```
 
 ## Compatibility
