@@ -15,8 +15,8 @@ A no-compromise pure-black (`#000000`) variant of GitHub Dark for IntelliJ Platf
 
 ## Also bundled (opt-in)
 
-- **Keymap "Vedhavyas Mac"** — Mac OS X keymap plus `Cmd+Enter` (Claude Code GUI chat newline) and `Alt+N` (New Element menu). Enable: Settings → Keymap → "Vedhavyas Mac".
-- **Code style "Vedhavyas Default"** — indent preferences for Python (dict alignment, smart tabs), Rust (smart tabs), Terraform (tabs), Protobuf/prototext (tabs). Enable: Settings → Editor → Code Style → "Vedhavyas Default".
+- **Keymap "Pure Black Mac"** — Mac OS X keymap plus `Cmd+Enter` (Claude Code GUI chat newline) and `Alt+N` (New Element menu). Enable: Settings → Keymap → "Pure Black Mac".
+- **Code style "Pure Black Default"** — language-standard indent preferences: spaces everywhere, 4-space for Python (PEP 8) and Rust (rustfmt), 2-space for Terraform (HCL), Protobuf, and prototext. Enable: Settings → Editor → Code Style → "Pure Black Default".
 
 Both are optional — theme works standalone if you want to keep your existing keymap and code style.
 

@@ -12,7 +12,7 @@ import com.intellij.openapi.components.service
 
 /**
  * On the first app frame creation after this plugin is installed, show a
- * notification offering to apply the full set of "Vedhavyas defaults"
+ * notification offering to apply the full set of Pure Black defaults
  * (theme, editor scheme, keymap, editor behavior flags). Idempotent — once
  * shown (whether applied or dismissed), never surfaces again until the
  * state file is deleted.
@@ -30,10 +30,9 @@ class FirstRunListener : AppLifecycleListener {
                 .getNotificationGroup("PureBlackGithub")
                 .createNotification(
                     title = "GitHub Dark Pure Black",
-                    content = "Apply Vedhavyas's recommended IDE defaults? " +
-                        "This switches the UI theme, editor color scheme, keymap, " +
-                        "and flips block cursor on, indent guides off, intention bulb off, " +
-                        "soft wraps in console.",
+                    content = "Apply all Pure Black defaults? " +
+                        "Switches the UI theme, editor color scheme, and keymap; " +
+                        "flips block cursor on, indent guides off, intention bulb off.",
                     type = NotificationType.INFORMATION,
                 )
 

@@ -1,4 +1,4 @@
-<keymap version="1" name="Vedhavyas Mac" parent="Mac OS X">
+<keymap version="1" name="Pure Black Mac" parent="Mac OS X">
   <action id="ClaudeCodeGUI.ChatNewlineAction">
     <keyboard-shortcut first-keystroke="meta enter" />
   </action>

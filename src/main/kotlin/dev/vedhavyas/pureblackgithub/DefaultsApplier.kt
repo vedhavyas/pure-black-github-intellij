@@ -21,7 +21,7 @@ object DefaultsApplier {
 
     private const val THEME_NAME = "GitHub Dark Pure Black"
     private const val SCHEME_NAME = "GitHub Dark Pure Black"
-    private const val KEYMAP_NAME = "Vedhavyas Mac"
+    private const val KEYMAP_NAME = "Pure Black Mac"
 
     fun applyAll() {
         ApplicationManager.getApplication().invokeLater {
@@ -29,7 +29,7 @@ object DefaultsApplier {
             applyEditorScheme()
             applyKeymap()
             applyEditorBehavior()
-            log.info("Vedhavyas defaults applied")
+            log.info("Pure Black defaults applied")
         }
     }
 
@@ -54,12 +54,17 @@ object DefaultsApplier {
     private fun applyEditorScheme() {
         try {
             val ecm = EditorColorsManager.getInstance()
-            val scheme = ecm.allSchemes.firstOrNull { it.name == SCHEME_NAME }
+            // Direct lookup by name — doesn't rely on getAllSchemes() being
+            // fully populated yet. Fall back to iterating if getScheme returns
+            // null (older platform versions, exotic registrations).
+            val scheme = ecm.getScheme(SCHEME_NAME)
+                ?: ecm.allSchemes.firstOrNull { it.name == SCHEME_NAME }
             if (scheme != null) {
                 ecm.setGlobalScheme(scheme)
                 log.info("Applied editor scheme: $SCHEME_NAME")
             } else {
-                log.warn("Editor scheme not found: $SCHEME_NAME")
+                val known = ecm.allSchemes.joinToString { it.name }
+                log.warn("Editor scheme not found: $SCHEME_NAME — allSchemes: [$known]")
             }
         } catch (t: Throwable) {
             log.warn("Failed to apply editor scheme", t)
@@ -69,12 +74,19 @@ object DefaultsApplier {
     private fun applyKeymap() {
         try {
             val km = KeymapManager.getInstance() as KeymapManagerEx
-            val keymap = km.allKeymaps.firstOrNull { it.name == KEYMAP_NAME }
+            // Bundled keymaps register with internal name = resource path
+            // (e.g. "/keymaps/PureBlackMac"), not the XML `name` attribute.
+            // The user-facing display lives on presentableName — match there
+            // first, then try internal name and direct by-name lookup.
+            val keymap = km.allKeymaps.firstOrNull { it.presentableName == KEYMAP_NAME }
+                ?: km.allKeymaps.firstOrNull { it.name == KEYMAP_NAME }
+                ?: km.getKeymap(KEYMAP_NAME)
             if (keymap != null) {
                 km.setActiveKeymap(keymap)
-                log.info("Applied keymap: $KEYMAP_NAME")
+                log.info("Applied keymap: $KEYMAP_NAME (internal name: ${keymap.name})")
             } else {
-                log.warn("Keymap not found: $KEYMAP_NAME")
+                val known = km.allKeymaps.joinToString { "${it.presentableName} (${it.name})" }
+                log.warn("Keymap not found: $KEYMAP_NAME — allKeymaps: [$known]")
             }
         } catch (t: Throwable) {
             log.warn("Failed to apply keymap", t)

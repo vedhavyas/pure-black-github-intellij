@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>dev.vedhavyas.pure-black-github</id>
   <name>GitHub Dark Pure Black</name>
-  <vendor email="ved@neutralfarming.earth" url="https://github.com/vedhavyas">vedhavyas</vendor>
+  <vendor email="7549475+vedhavyas@users.noreply.github.com" url="https://github.com/vedhavyas">Vedhavyas Singareddi</vendor>
 
   <description><![CDATA[
     <h3>GitHub Dark — Pure Black</h3>
@@ -17,8 +17,8 @@
     <p>Subtle <code>#30363d</code> 1px borders between panels so you can tell them apart without sacrificing the flat black look. Uses GitHub Primer <code>border.default</code>.</p>
     <h4>Bundled bonuses (opt-in)</h4>
     <ul>
-      <li><b>Keymap</b> — "Vedhavyas Mac" (Mac OS X with two tweaks)</li>
-      <li><b>Code style</b> — "Vedhavyas Default" (Python/Rust/Terraform/Protobuf indent preferences)</li>
+      <li><b>Keymap</b> — "Pure Black Mac" (Mac OS X with two tweaks: <code>Cmd+Enter</code> for Claude Code GUI chat newline, <code>Alt+N</code> for New Element menu)</li>
+      <li><b>Code style</b> — "Pure Black Default" (language-standard indent: spaces everywhere, PEP 8 for Python, rustfmt for Rust, 2-space for HCL/Terraform/Protobuf/prototext)</li>
     </ul>
     <h4>First-run experience</h4>
     <p>On first install, a one-time notification offers to apply everything at once: the theme, editor color scheme, keymap, block cursor, indent guides off, intention bulb off. Click <b>Apply all</b> or <b>Dismiss</b>. Non-intrusive, never asks twice.</p>
@@ -29,6 +29,20 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.4</h4>
+    <ul>
+      <li>De-branded for public release: keymap renamed "Pure Black Mac", code style renamed "Pure Black Default" (also reworked to language-standard defaults: spaces everywhere, PEP 8 Python, rustfmt Rust, 2-space HCL/Protobuf/prototext).</li>
+      <li>Editor color scheme Rust token overrides realigned with authentic GitHub Dark: constants + static use the constant blue (`#79c0ff`) instead of the type purple; italics removed from enum / type alias / macro.</li>
+      <li>First-run notification text rewritten to neutral wording.</li>
+    </ul>
+    <h4>1.2.3</h4>
+    <ul>
+      <li>Fixed: first-run Apply all actually switches keymap to "Vedhavyas Mac" (bundledKeymap expects bare filename, registers by filename not XML name attribute — renamed resource accordingly)</li>
+    </ul>
+    <h4>1.2.1</h4>
+    <ul>
+      <li>Fixed: first-run Apply all reliably switches editor scheme (direct getScheme(name) lookup + iterate-all fallback)</li>
+    </ul>
     <h4>1.2.0</h4>
     <ul>
       <li>Added first-run notification that applies all defaults in one click: theme, editor scheme, keymap, block cursor on, indent guides off, intention bulb off</li>
@@ -50,8 +64,8 @@
   <extensions defaultExtensionNs="com.intellij">
     <themeProvider id="PURE_BLACK_GITHUB" path="/themes/pure-black-github.theme.json" />
     <bundledColorScheme path="/colors/github-dark-pure-black" />
-    <bundledKeymap file="/keymaps/VedhavyasMac.xml" />
-    <bundledCodeStyleSettings file="/codeStyles/VedhavyasDefault.xml" />
+    <bundledKeymap file="Pure Black Mac.xml" />
+    <bundledCodeStyleSettings file="/codeStyles/PureBlackDefault.xml" />
 
     <notificationGroup id="PureBlackGithub" displayType="STICKY_BALLOON" />
 
