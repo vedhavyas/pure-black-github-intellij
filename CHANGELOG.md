@@ -65,7 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fira Code 14pt, ligatures enabled by default.
 - Rust-specific token overrides (struct, enum, trait, crate, macro).
 
-[Unreleased]: https://github.com/vedhavyas/pure-black-github/compare/v1.2.0...HEAD
-[1.2.0]: https://github.com/vedhavyas/pure-black-github/releases/tag/v1.2.0
-[1.1.0]: https://github.com/vedhavyas/pure-black-github/releases/tag/v1.1.0
-[1.0.0]: https://github.com/vedhavyas/pure-black-github/releases/tag/v1.0.0
+[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.0
+[1.1.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.1.0
+[1.0.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.0.0
