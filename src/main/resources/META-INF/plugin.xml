@@ -17,16 +17,11 @@
     <p>Subtle <code>#30363d</code> 1px borders between panels so you can tell them apart without sacrificing the flat black look. Uses GitHub Primer <code>border.default</code>.</p>
     <h4>Bundled bonuses (opt-in)</h4>
     <ul>
-      <li><b>Keymap</b> — "Vedhavyas Mac" (Mac OS X with two tweaks: Cmd+Enter for Claude Code GUI chat newline, Alt+N for New Element)</li>
+      <li><b>Keymap</b> — "Vedhavyas Mac" (Mac OS X with two tweaks)</li>
       <li><b>Code style</b> — "Vedhavyas Default" (Python/Rust/Terraform/Protobuf indent preferences)</li>
     </ul>
-    <h4>Setup after install</h4>
-    <ul>
-      <li>Settings → Appearance &amp; Behavior → Appearance → Theme → "GitHub Dark Pure Black"</li>
-      <li>Settings → Editor → Color Scheme → "GitHub Dark Pure Black"</li>
-      <li>(Optional) Settings → Keymap → "Vedhavyas Mac"</li>
-      <li>(Optional) Settings → Editor → Code Style → "Vedhavyas Default"</li>
-    </ul>
+    <h4>First-run experience</h4>
+    <p>On first install, a one-time notification offers to apply everything at once: the theme, editor color scheme, keymap, block cursor, indent guides off, intention bulb off. Click <b>Apply all</b> or <b>Dismiss</b>. Non-intrusive, never asks twice.</p>
     <h4>Parent</h4>
     <p>Extends IntelliJ's built-in Islands Dark. Fully compatible with the modern Islands UI.</p>
     <h4>Fonts</h4>
@@ -34,19 +29,19 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.0</h4>
+    <ul>
+      <li>Added first-run notification that applies all defaults in one click: theme, editor scheme, keymap, block cursor on, indent guides off, intention bulb off</li>
+      <li>Persistent state — notification shows once, never again</li>
+    </ul>
     <h4>1.1.0</h4>
     <ul>
-      <li>Added bundled keymap "Vedhavyas Mac" — Mac OS X keymap with custom shortcuts for Claude Code GUI and New Element menu</li>
-      <li>Added bundled code style "Vedhavyas Default" — indent preferences for Python, Rust, Terraform, Protobuf</li>
-      <li>Both keymap and code style are <i>opt-in</i> — select from Settings after install; theme works standalone</li>
+      <li>Added bundled keymap "Vedhavyas Mac"</li>
+      <li>Added bundled code style "Vedhavyas Default"</li>
     </ul>
     <h4>1.0.0</h4>
     <ul>
-      <li>Initial release</li>
-      <li>Pure black (<code>#000000</code>) UI theme extending Islands Dark</li>
-      <li>Bundled editor color scheme with pure-black editor, gutter, console backgrounds</li>
-      <li>Subtle <code>#30363d</code> borders between panels</li>
-      <li>Fira Code 14pt, ligatures enabled</li>
+      <li>Initial release — pure-black UI theme + editor color scheme + border accents</li>
     </ul>
   ]]></change-notes>
 
@@ -57,5 +52,14 @@
     <bundledColorScheme path="/colors/github-dark-pure-black" />
     <bundledKeymap file="/keymaps/VedhavyasMac.xml" />
     <bundledCodeStyleSettings file="/codeStyles/VedhavyasDefault.xml" />
+
+    <notificationGroup id="PureBlackGithub" displayType="STICKY_BALLOON" />
+
+    <applicationService serviceImplementation="dev.vedhavyas.pureblackgithub.FirstRunService" />
   </extensions>
+
+  <applicationListeners>
+    <listener class="dev.vedhavyas.pureblackgithub.FirstRunListener"
+              topic="com.intellij.ide.AppLifecycleListener" />
+  </applicationListeners>
 </idea-plugin>

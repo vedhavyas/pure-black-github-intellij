@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-04-22
+
+### Added
+- **First-run notification.** On the first IDE start after installing the
+  plugin, a non-intrusive notification offers to apply all defaults in one
+  click:
+  - Switch UI theme to "GitHub Dark Pure Black"
+  - Switch editor color scheme to "GitHub Dark Pure Black"
+  - Switch keymap to "Vedhavyas Mac"
+  - Flip block cursor on, indent guides off, intention bulb off
+- **Persistent state.** Notification shows exactly once; flag survives
+  restarts. Delete `config/options/pure-black-github-firstrun.xml` to
+  reset.
+- **Opt-in design.** Click **Apply all** or **Dismiss** — nothing happens
+  silently, never asks twice either way.
+- Kotlin sources under `dev.vedhavyas.pureblackgithub`:
+  - `FirstRunService` — `PersistentStateComponent` holding the shown flag
+  - `FirstRunListener` — `AppLifecycleListener` that fires on first app
+    frame and shows the notification
+  - `DefaultsApplier` — encapsulates the switchover, each step isolated
+    behind its own try/catch so API drift in one area doesn't abort the
+    rest
+
+### Notes
+- Kotlin 2.1.0 added to the Gradle build.
+- Soft wraps and console-only soft-wrap policy are intentionally not
+  touched from the apply-all flow — their API differs across IDEA
+  releases. Set manually in Settings → Editor → General if desired.
+
 ## [1.1.0] — 2026-04-22
 
 ### Added
@@ -36,6 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fira Code 14pt, ligatures enabled by default.
 - Rust-specific token overrides (struct, enum, trait, crate, macro).
 
-[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.1.0
-[1.0.0]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.0.0
+[Unreleased]: https://github.com/vedhavyas/pure-black-github/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/vedhavyas/pure-black-github/releases/tag/v1.2.0
+[1.1.0]: https://github.com/vedhavyas/pure-black-github/releases/tag/v1.1.0
+[1.0.0]: https://github.com/vedhavyas/pure-black-github/releases/tag/v1.0.0

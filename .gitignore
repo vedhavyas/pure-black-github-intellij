@@ -1,11 +1,16 @@
 .gradle/
 .intellijPlatform/
+.kotlin/
 build/
 .idea/
 *.iml
 local.properties
 gradle-app.setting
 .DS_Store
+
+# direnv — secrets live here, never commit
+.envrc
+.direnv/
 
 # Signing artifacts — never commit
 chain.crt
