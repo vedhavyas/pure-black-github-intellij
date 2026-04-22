@@ -5,13 +5,24 @@
 #
 #   edit source → ./scripts/dev-install.sh → restart IDEA → observe.
 #
-# Flags:
-#   --reset-firstrun   Also wipe pure-black-github-firstrun.xml so the
-#                      first-run notification fires again on next start.
-#   --open             After installing, launch IDEA automatically.
+# Two modes:
 #
-# Requires IDEA to be fully quit (⌘Q). The script refuses to run otherwise —
-# replacing a jar IDEA is holding open leads to half-applied state.
+#   default         Requires IDEA quit. Unpacks the new zip into plugins/
+#                   directly. Fastest full-restart path.
+#
+#   --hot           IDEA must be running. Builds only, then prints the zip
+#                   path. You go Settings → Plugins → ⚙ → Install Plugin
+#                   from Disk → pick the zip. IDEA dynamically reloads the
+#                   plugin without restart.
+#
+# Flags:
+#   --hot              Don't touch the plugins dir; let IDEA do the install
+#                      via Settings (dynamic reload, no restart).
+#   --reset-firstrun   Wipe pure-black-github-firstrun.xml so the first-run
+#                      notification fires again on next start. Only meaningful
+#                      with the default mode (requires IDEA quit).
+#   --open             After default-mode install, launch IDEA automatically.
+#
 
 set -euo pipefail
 
@@ -21,10 +32,12 @@ IDEA_PLUGINS="$IDEA_CONFIG/plugins"
 PLUGIN_DIR="$IDEA_PLUGINS/pure-black-github"
 FIRSTRUN_STATE="$IDEA_CONFIG/options/pure-black-github-firstrun.xml"
 
+mode="default"
 reset_firstrun=0
 open_idea=0
 for arg in "$@"; do
   case "$arg" in
+    --hot)            mode="hot" ;;
     --reset-firstrun) reset_firstrun=1 ;;
     --open)           open_idea=1 ;;
     -h|--help)
@@ -34,12 +47,6 @@ for arg in "$@"; do
     *) echo "unknown flag: $arg" >&2; exit 2 ;;
   esac
 done
-
-# IDEA running? Refuse.
-if pgrep -f "IntelliJ IDEA.app/Contents/MacOS/idea" >/dev/null 2>&1; then
-  echo "IDEA is running. Quit it (⌘Q) before running this script." >&2
-  exit 1
-fi
 
 # Java 21 picks up the toolchain-spec build.
 export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
@@ -53,7 +60,32 @@ if [[ -z "$zip_file" ]]; then
   echo "build produced no zip in build/distributions/" >&2
   exit 1
 fi
+zip_abs="$PROJECT_ROOT/$zip_file"
 echo "→ built $(basename "$zip_file")"
+
+if [[ "$mode" == "hot" ]]; then
+  if ! pgrep -f "IntelliJ IDEA.app/Contents/MacOS/idea" >/dev/null 2>&1; then
+    echo "IDEA is not running. Hot mode needs IDEA running." >&2
+    echo "  run without --hot to install-and-exit, or launch IDEA first." >&2
+    exit 1
+  fi
+  echo
+  echo "HOT INSTALL — do this in your running IDEA:"
+  echo "  Settings (⌘,) → Plugins → ⚙ (gear) → Install Plugin from Disk"
+  echo "  Pick: $zip_abs"
+  echo "  Confirm 'Upgrade' when prompted."
+  echo
+  echo "IDEA will reload the plugin without restart. Theme/scheme re-apply automatically."
+  exit 0
+fi
+
+# Default mode — requires IDEA closed.
+if pgrep -f "IntelliJ IDEA.app/Contents/MacOS/idea" >/dev/null 2>&1; then
+  echo "IDEA is running. Either:" >&2
+  echo "  1. Quit IDEA (⌘Q) and rerun this script, or" >&2
+  echo "  2. Rerun with --hot (keeps IDEA open, installs via Settings)" >&2
+  exit 1
+fi
 
 # Remove any existing install (hand-crafted folder or earlier zip install).
 if [[ -d "$PLUGIN_DIR" ]]; then
@@ -62,7 +94,7 @@ if [[ -d "$PLUGIN_DIR" ]]; then
 fi
 
 echo "→ installing into $IDEA_PLUGINS"
-unzip -q "$zip_file" -d "$IDEA_PLUGINS"
+unzip -q "$zip_abs" -d "$IDEA_PLUGINS"
 
 if (( reset_firstrun )); then
   if [[ -f "$FIRSTRUN_STATE" ]]; then
