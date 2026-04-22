@@ -1,0 +1,41 @@
+<idea-plugin>
+  <id>dev.vedhavyas.pure-black-github</id>
+  <name>GitHub Dark Pure Black</name>
+  <vendor email="ved@neutralfarming.earth" url="https://github.com/vedhavyas">vedhavyas</vendor>
+
+  <description><![CDATA[
+    <h3>GitHub Dark — Pure Black</h3>
+    <p>A no-compromise pure black (<code>#000000</code>) variant of GitHub Dark for IntelliJ Platform IDEs. Built to feel like a TUI — flat, quiet, zero chrome tint.</p>
+    <h4>What's pure black</h4>
+    <ul>
+      <li>Editor pane, gutter, console, terminal</li>
+      <li>All tool windows (Project view, Terminal, Services, Build, Run, Debug, Commit)</li>
+      <li>Tab bar, main toolbar, status bar, popups, dialogs, menus</li>
+      <li>Text fields, combo boxes, dropdowns</li>
+    </ul>
+    <h4>Visual separation</h4>
+    <p>Subtle <code>#30363d</code> 1px borders between panels so you can tell them apart without sacrificing the flat black look. Uses GitHub Primer <code>border.default</code>.</p>
+    <h4>What you still need to set</h4>
+    <p>Install the theme, then <b>Settings → Appearance &amp; Behavior → Appearance → Theme → "GitHub Dark Pure Black"</b> and <b>Settings → Editor → Color Scheme → "GitHub Dark Pure Black"</b>.</p>
+    <h4>Parent</h4>
+    <p>Extends IntelliJ's built-in Islands Dark. Fully compatible with the modern Islands UI.</p>
+  ]]></description>
+
+  <change-notes><![CDATA[
+    <h4>1.0.0</h4>
+    <ul>
+      <li>Initial release</li>
+      <li>Pure black (<code>#000000</code>) UI theme extending Islands Dark</li>
+      <li>Bundled editor color scheme with pure-black editor, gutter, console backgrounds</li>
+      <li>Subtle <code>#30363d</code> borders between panels</li>
+      <li>Fira Code 14pt, ligatures enabled</li>
+    </ul>
+  ]]></change-notes>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <themeProvider id="PURE_BLACK_GITHUB" path="/themes/pure-black-github.theme.json" />
+    <bundledColorScheme path="/colors/github-dark-pure-black" />
+  </extensions>
+</idea-plugin>

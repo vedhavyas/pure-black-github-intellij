@@ -1,0 +1,14 @@
+.gradle/
+.intellijPlatform/
+build/
+.idea/
+*.iml
+local.properties
+gradle-app.setting
+.DS_Store
+
+# Signing artifacts — never commit
+chain.crt
+private.pem
+*.pem
+*.crt
