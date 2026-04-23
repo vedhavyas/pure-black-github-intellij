@@ -29,6 +29,10 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.6</h4>
+    <ul>
+      <li>Apply all now disables IntelliJ's File Colors master toggle — no more green tint on test folders, grey on non-project files, etc. Matches the pure-black aesthetic. Folder role markers (excluded, generated) are unaffected.</li>
+    </ul>
     <h4>1.2.5</h4>
     <ul>
       <li>Fixed: Rust enum / type alias / macro-call / lifetime / trait-method tokens no longer inherit italic from the Rust plugin's Darcula overlay — explicit FONT_TYPE=0 on all org.rust.* overrides. Enum variants now render in constant blue, lifetimes in keyword coral.</li>

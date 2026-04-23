@@ -8,6 +8,8 @@ import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.ex.EditorSettingsExternalizable
 import com.intellij.openapi.keymap.KeymapManager
 import com.intellij.openapi.keymap.ex.KeymapManagerEx
+import com.intellij.openapi.project.ProjectManager
+import com.intellij.ui.FileColorManager
 
 /**
  * One-shot switchover: applies this plugin's theme, editor scheme, keymap,
@@ -29,6 +31,7 @@ object DefaultsApplier {
             applyEditorScheme()
             applyKeymap()
             applyEditorBehavior()
+            applyFileColorsOff()
             log.info("Pure Black defaults applied")
         }
     }
@@ -90,6 +93,30 @@ object DefaultsApplier {
             }
         } catch (t: Throwable) {
             log.warn("Failed to apply keymap", t)
+        }
+    }
+
+    private fun applyFileColorsOff() {
+        // Master toggle off on FileColorManager — kills all scope-based
+        // tinting in the project view + editor tabs (Tests green, Non-Project
+        // Files grey, etc.). FileColorManager is project-scoped and its
+        // public API only exposes setEnabled() as a setter, so we sweep every
+        // open project. Folder role markers (Excluded, Generated Sources) are
+        // unaffected — those come from project structure, not File Colors.
+        try {
+            val projects = ProjectManager.getInstance().openProjects
+            if (projects.isEmpty()) {
+                log.info("No open projects — File Colors master toggle left unchanged")
+                return
+            }
+            for (project in projects) {
+                trySet("file colors off (${project.name})") {
+                    FileColorManager.getInstance(project).isEnabled = false
+                }
+            }
+            log.info("Disabled File Colors master toggle on ${projects.size} project(s)")
+        } catch (t: Throwable) {
+            log.warn("Failed to disable File Colors", t)
         }
     }
 

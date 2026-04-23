@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.6] — 2026-04-22
+
+### Changed
+- **Apply all now also disables IntelliJ's File Colors master toggle.**
+  Scope-based tinting in the project view (Tests → green, Non-Project
+  Files → grey, etc.) and editor tabs is chromatic noise that fights
+  the pure-black aesthetic. DefaultsApplier now calls
+  `FileColorManager.setEnabled(false)` on every open project. Folder
+  role markers (Excluded, Generated Sources) are unaffected — they're
+  semantic indicators from project structure, not File Colors.
+
 ## [1.2.5] — 2026-04-22
 
 ### Fixed
@@ -146,7 +157,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fira Code 14pt, ligatures enabled by default.
 - Rust-specific token overrides (struct, enum, trait, crate, macro).
 
-[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.2.5...HEAD
+[Unreleased]: https://github.com/vedhavyas/pure-black-github-intellij/compare/v1.2.6...HEAD
+[1.2.6]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.6
 [1.2.5]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.5
 [1.2.4]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.4
 [1.2.3]: https://github.com/vedhavyas/pure-black-github-intellij/releases/tag/v1.2.3
