@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.8] — 2026-04-27
+
+### Changed
+- Warning and weak-warning ranges no longer draw yellow outlines in the
+  main editor. Amber error-stripe markers stay visible on the side.
+
 ## [1.2.7] — 2026-04-27
 
 ### Changed

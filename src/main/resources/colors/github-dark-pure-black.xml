@@ -45,13 +45,11 @@
     </option>
     <option name="WARNING_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="d29922" />
         <option name="ERROR_STRIPE_COLOR" value="d29922" />
       </value>
     </option>
     <option name="WEAK_WARNING_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="d29922" />
         <option name="ERROR_STRIPE_COLOR" value="d29922" />
       </value>
     </option>
