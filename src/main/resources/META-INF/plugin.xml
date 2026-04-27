@@ -29,6 +29,10 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.7</h4>
+    <ul>
+      <li>Warning and weak-warning ranges no longer paint yellow blocks in the main editor; underline/effect and error-stripe markers stay amber.</li>
+    </ul>
     <h4>1.2.6</h4>
     <ul>
       <li>Apply all now disables IntelliJ's File Colors master toggle — no more green tint on test folders, grey on non-project files, etc. Matches the pure-black aesthetic. Folder role markers (excluded, generated) are unaffected.</li>

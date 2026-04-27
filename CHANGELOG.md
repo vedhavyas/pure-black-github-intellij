@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.7] — 2026-04-27
+
+### Changed
+- Warning and weak-warning ranges no longer paint yellow blocks in the
+  main editor. The warning underline/effect and error-stripe markers stay
+  amber so diagnostics remain visible without adding background noise.
+
 ## [1.2.6] — 2026-04-22
 
 ### Changed
