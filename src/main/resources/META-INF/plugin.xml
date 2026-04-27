@@ -29,6 +29,10 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.9</h4>
+    <ul>
+      <li>Warning and weak-warning ranges now show a dotted amber underline in the main editor, distinct from the error wave underline. Side error-stripe markers stay amber.</li>
+    </ul>
     <h4>1.2.8</h4>
     <ul>
       <li>Warning and weak-warning ranges no longer draw yellow outlines in the main editor; amber error-stripe markers stay visible on the side.</li>

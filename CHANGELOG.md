@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.9] — 2026-04-27
+
+### Changed
+- Warning and weak-warning ranges now show a dotted amber underline in
+  the main editor, distinct from the error wave underline. Side
+  error-stripe markers stay amber.
+
 ## [1.2.8] — 2026-04-27
 
 ### Changed
