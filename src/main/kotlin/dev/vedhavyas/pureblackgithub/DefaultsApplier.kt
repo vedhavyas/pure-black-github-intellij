@@ -100,9 +100,9 @@ object DefaultsApplier {
     private fun applyFileColorsOff() {
         // Master toggle off on FileColorManager — kills all scope-based
         // tinting in the project view + editor tabs (Tests green, Non-Project
-        // Files grey, etc.). FileColorManager is project-scoped and its
-        // public API only exposes setEnabled() as a setter, so we sweep every
-        // open project. Folder role markers (Excluded, Generated Sources) are
+        // Files grey, etc.). setEnabled writes an app-level flag, but the
+        // manager is only reachable through a project, so at least one has to
+        // be open. Folder role markers (Excluded, Generated Sources) are
         // unaffected — those come from project structure, not File Colors.
         try {
             val projects = ProjectManager.getInstance().openProjects
