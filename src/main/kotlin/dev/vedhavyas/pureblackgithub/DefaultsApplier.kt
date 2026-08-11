@@ -13,7 +13,7 @@ import com.intellij.ui.FileColorManager
 
 /**
  * One-shot switchover: applies this plugin's theme, editor scheme, keymap,
- * and flips block cursor on / indent guides off / intention bulb off.
+ * and flips block cursor off / indent guides off / intention bulb off.
  * Each step is independent — one failure doesn't abort the rest, and
  * everything is wrapped in try/catch since IntelliJ's API does drift
  * between versions.
@@ -123,7 +123,7 @@ object DefaultsApplier {
     private fun applyEditorBehavior() {
         val s = EditorSettingsExternalizable.getInstance()
         // Each setter can potentially throw on API drift; isolate them.
-        trySet("block cursor") { s.isBlockCursor = true }
+        trySet("block cursor off") { s.isBlockCursor = false }
         trySet("indent guides hidden") { s.isIndentGuidesShown = false }
         trySet("intention bulb off") { s.isShowIntentionBulb = false }
         log.info("Applied editor behavior flags")

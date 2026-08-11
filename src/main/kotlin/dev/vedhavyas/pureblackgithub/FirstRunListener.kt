@@ -32,7 +32,7 @@ class FirstRunListener : AppLifecycleListener {
                     title = "GitHub Dark Pure Black",
                     content = "Apply all Pure Black defaults? " +
                         "Switches the UI theme, editor color scheme, and keymap; " +
-                        "flips block cursor on, indent guides off, intention bulb off.",
+                        "flips block cursor off, indent guides off, intention bulb off.",
                     type = NotificationType.INFORMATION,
                 )
 

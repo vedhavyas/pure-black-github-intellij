@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.10] — 2026-08-14
+
+### Changed
+- Apply all now turns the block caret off instead of on, matching
+  IntelliJ's default. The prompt only ever fires once per IDE, so existing
+  installs keep the caret they have - it's Settings > Editor > General >
+  Appearance > "Use block caret" if you want to switch it.
+
 ## [1.2.9] — 2026-04-27
 
 ### Changed

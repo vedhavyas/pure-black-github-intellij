@@ -21,7 +21,7 @@
       <li><b>Code style</b> — "Pure Black Default" (language-standard indent: spaces everywhere, PEP 8 for Python, rustfmt for Rust, 2-space for HCL/Terraform/Protobuf/prototext)</li>
     </ul>
     <h4>First-run experience</h4>
-    <p>On first install, a one-time notification offers to apply everything at once: the theme, editor color scheme, keymap, block cursor, indent guides off, intention bulb off. Click <b>Apply all</b> or <b>Dismiss</b>. Non-intrusive, never asks twice.</p>
+    <p>On first install, a one-time notification offers to apply everything at once: the theme, editor color scheme, keymap, block cursor off, indent guides off, intention bulb off. Click <b>Apply all</b> or <b>Dismiss</b>. Non-intrusive, never asks twice.</p>
     <h4>Parent</h4>
     <p>Extends IntelliJ's built-in Islands Dark. Fully compatible with the modern Islands UI.</p>
     <h4>Fonts</h4>
@@ -29,6 +29,10 @@
   ]]></description>
 
   <change-notes><![CDATA[
+    <h4>1.2.10</h4>
+    <ul>
+      <li>Apply all now turns the block caret off instead of on, matching IntelliJ's default. The prompt only ever fires once per IDE, so existing installs keep the caret they have - it's Settings > Editor > General > Appearance > "Use block caret" if you want to switch it.</li>
+    </ul>
     <h4>1.2.9</h4>
     <ul>
       <li>Warning and weak-warning ranges now show a dotted amber underline in the main editor, distinct from the error wave underline. Side error-stripe markers stay amber.</li>
