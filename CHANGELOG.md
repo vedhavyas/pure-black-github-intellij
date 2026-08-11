@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The first-run prompt now lists the File Colors step that Apply all has
   performed since 1.2.6.
 
+### Fixed
+- A failure looking up editor settings no longer aborts the rest of Apply
+  all and skips the File Colors step.
+
 ## [1.2.9] — 2026-04-27
 
 ### Changed

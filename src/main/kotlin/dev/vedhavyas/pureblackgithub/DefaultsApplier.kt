@@ -122,12 +122,16 @@ object DefaultsApplier {
     }
 
     private fun applyEditorBehavior() {
-        val s = EditorSettingsExternalizable.getInstance()
-        // Each setter can potentially throw on API drift; isolate them.
-        trySet("block cursor off") { s.isBlockCursor = false }
-        trySet("indent guides hidden") { s.isIndentGuidesShown = false }
-        trySet("intention bulb off") { s.isShowIntentionBulb = false }
-        log.info("Applied editor behavior flags")
+        try {
+            val s = EditorSettingsExternalizable.getInstance()
+            // Each setter can potentially throw on API drift; isolate them.
+            trySet("block cursor off") { s.isBlockCursor = false }
+            trySet("indent guides hidden") { s.isIndentGuidesShown = false }
+            trySet("intention bulb off") { s.isShowIntentionBulb = false }
+            log.info("Applied editor behavior flags")
+        } catch (t: Throwable) {
+            log.warn("Failed to apply editor behavior flags", t)
+        }
     }
 
     private inline fun trySet(label: String, block: () -> Unit) {
