@@ -12,8 +12,9 @@ import com.intellij.openapi.project.ProjectManager
 import com.intellij.ui.FileColorManager
 
 /**
- * One-shot switchover: applies this plugin's theme, editor scheme, keymap,
- * and flips block cursor off / indent guides off / intention bulb off.
+ * One-shot switchover: applies this plugin's theme, editor scheme and
+ * keymap, then turns off block cursor, indent guides, intention bulb and
+ * File Colors.
  * Each step is independent — one failure doesn't abort the rest, and
  * everything is wrapped in try/catch since IntelliJ's API does drift
  * between versions.
