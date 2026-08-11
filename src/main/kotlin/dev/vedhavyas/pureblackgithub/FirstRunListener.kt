@@ -13,9 +13,9 @@ import com.intellij.openapi.components.service
 /**
  * On the first app frame creation after this plugin is installed, show a
  * notification offering to apply the full set of Pure Black defaults
- * (theme, editor scheme, keymap, editor behavior flags). Idempotent — once
- * shown (whether applied or dismissed), never surfaces again until the
- * state file is deleted.
+ * (theme, editor scheme, keymap, editor behavior flags, File Colors).
+ * Idempotent — once shown (whether applied or dismissed), never surfaces
+ * again until the state file is deleted.
  */
 class FirstRunListener : AppLifecycleListener {
     override fun appFrameCreated(commandLineArgs: MutableList<String>) {
@@ -32,7 +32,8 @@ class FirstRunListener : AppLifecycleListener {
                     title = "GitHub Dark Pure Black",
                     content = "Apply all Pure Black defaults? " +
                         "Switches the UI theme, editor color scheme, and keymap; " +
-                        "flips block cursor off, indent guides off, intention bulb off.",
+                        "turns off the block caret, indent guides, intention bulb, " +
+                        "and File Colors in any open project.",
                     type = NotificationType.INFORMATION,
                 )
 
