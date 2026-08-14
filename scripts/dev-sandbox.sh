@@ -10,6 +10,9 @@
 
 set -euo pipefail
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
+probe="$(java -XshowSettings:properties -version 2>&1)" || true
+JAVA_HOME="$(sed -n 's/^ *java\.home = //p' <<<"$probe")"
+[[ -n "$JAVA_HOME" ]] || { echo "no usable java on PATH - this build needs a JDK 21" >&2; echo "$probe" >&2; exit 1; }
+export JAVA_HOME
 cd "$PROJECT_ROOT"
 exec ./gradlew runIde
