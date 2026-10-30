@@ -48,9 +48,15 @@ for arg in "$@"; do
   esac
 done
 
-# A hardcoded JDK path breaks when the JDK moves or on a new machine.
-probe="$(java -XshowSettings:properties -version 2>&1)" || true
+# A hardcoded JDK path breaks when the JDK moves or on a new machine. The probe runs
+# with JAVA_HOME cleared because the macOS java stub hangs when it points at a non-JDK.
+orig_home="${JAVA_HOME:-}"
+probe="$(JAVA_HOME= java -XshowSettings:properties -version 2>&1)" || true
 JAVA_HOME="$(sed -n 's/^ *java\.home = //p' <<<"$probe")"
+if [[ -z "$JAVA_HOME" && -n "$orig_home" && -x "$orig_home/bin/java" ]]; then
+  probe="$(JAVA_HOME= "$orig_home/bin/java" -XshowSettings:properties -version 2>&1)" || true
+  JAVA_HOME="$(sed -n 's/^ *java\.home = //p' <<<"$probe")"
+fi
 [[ -n "$JAVA_HOME" ]] || { echo "no usable java on PATH - this build needs a JDK 21" >&2; echo "$probe" >&2; exit 1; }
 export JAVA_HOME
 
