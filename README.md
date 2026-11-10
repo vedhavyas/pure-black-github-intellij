@@ -64,7 +64,14 @@ cd pure-black-github-intellij
 
 ## Development
 
-Requires JDK 21 (`brew install openjdk@21`) and the Gradle wrapper (included).
+Requires JDK 21 and the Gradle wrapper (included). On macOS:
+
+```bash
+brew install openjdk@21
+export JAVA_HOME="$(brew --prefix openjdk@21)"
+```
+
+`openjdk@21` is keg-only, so Homebrew does not put its `java` on `PATH`. The dev scripts use `JAVA_HOME` when set and otherwise probe `java` on `PATH`.
 
 ### Feedback-loop scripts
 
